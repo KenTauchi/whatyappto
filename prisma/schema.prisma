@@ -30,7 +30,7 @@ model User {
     posts Post[] // One to many relationship 
     likes Like[] // One to many relationship 
     comments Comment[] // One to many relationship 
-    // saved Saved[] // One to many relationship 
+    savedPosts SavedPost[] // One to many relationship 
 
     following Follows[] @relation("Following") //users that the user is following
     followers Follows[] @relation("Followers") //users that follow the user
@@ -51,8 +51,20 @@ model Post {
     author User @relation(fields: [authorId], references: [id], onDelete: Cascade) // Cascade means that if the user is deleted, all their posts will be deleted
     likes Like[] // One to many relationship 
     comments Comment[] // One to many relationship 
-    // saved Saved[] // One to many relationship 
     notifications Notification[] 
+    savedBy SavedPost[] 
+    
+}
+
+model SavedPost {
+    id String @id @default(uuid())
+    userId String
+    postId String
+    savedAt DateTime @default(now())
+
+    // Relations
+    user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+    post Post @relation(fields: [postId], references: [id], onDelete: Cascade)
     
 }
 
