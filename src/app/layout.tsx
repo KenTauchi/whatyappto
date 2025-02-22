@@ -6,7 +6,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { NavBar } from "@/components/Navbar";
 import { Sidebar } from "@/components/Sidebar";
-
+import { Toaster } from "@/components/ui/sonner";
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -41,6 +41,7 @@ export default function RootLayout({
             <div className="min-h-screen">
               <NavBar />
               <main className="py-8">
+                <Toaster />
                 <div className="mx-auto max-w-7xl px-4">
                   <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                     <div className="hidden lg:block lg:col-span-3">
