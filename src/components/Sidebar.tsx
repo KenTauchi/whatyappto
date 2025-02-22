@@ -16,16 +16,9 @@ export async function Sidebar() {
   const userInfo = await getUserByClerkId(authUser.id);
 
   if (!userInfo) {
-    // This should never happen in normal operation
     console.error(`User with Clerk ID ${authUser.id} not found in database`);
-    // You might want to redirect to an error page or handle this case differently
     return <div>Something went wrong. Please try again later.</div>;
   }
-
-  //   const user = await getUserByClerkId(authUser.id);
-  //   if (!user) return null;
-
-  console.log(userInfo);
 
   return (
     <div className="sticky top-20">

@@ -44,10 +44,21 @@ export async function getUserByClerkId(clerkId: string) {
           following: true,
           followers: true,
           posts: true,
+          savedPosts: true,
         },
       },
     },
   });
 
   return user;
+}
+
+export async function getDBUserId() {
+  const { userId: clerkId } = await auth();
+  if (!clerkId) throw new Error("Unauthorized");
+
+  const userDbData = await getUserByClerkId(clerkId);
+  if (!userDbData) throw new Error("User not found");
+
+  return userDbData.id;
 }
