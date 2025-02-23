@@ -7,6 +7,9 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { NavBar } from "@/components/Navbar";
 import { Sidebar } from "@/components/Sidebar";
 import { Toaster } from "@/components/ui/sonner";
+import QueryProvider from "@/providers/query-provider";
+import { QueryClient } from "react-query";
+
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
